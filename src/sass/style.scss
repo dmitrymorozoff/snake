@@ -1,0 +1,293 @@
+$color_puerto_rico: #57d5af;
+$color_ocean_green: #3db572;
+$color_butterfly_bush: #5e54a6;
+$color_wild_sand: #f5f5f5;
+$color_waterloo: lightslategray;
+$color_log_cabin: #222;
+$color_gigas: #4f369b;
+$color_meteorite: #392878;
+$color_silver: #c1c1c1;
+$color_black_10: rgba(0, 0, 0, 0.1);
+$color_mine_shaft: #333;
+$color_white: #fff;
+$color_scampi: #6a5eb0;
+$color_shark: #242424;
+$color_red: #d60c0a;
+$color_jacarta: #372770;
+$color_violent_violet: #291a5e;
+$color_tuatara: #393738;
+$color_bunker: #151314;
+$font_main: Helvetica;
+$font_secondary: sans-serif;
+%cells-style {
+    margin: 0;
+    border: 1px solid $color-white;
+    width: 11.9px;
+    height: 11.9px;
+}
+
+%buttons-style {
+    z-index: 999;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: 3px solid $color_bunker;
+    border-radius: 50%;
+    background: $color_tuatara;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    float: right;
+    margin-top: -60px;
+    box-shadow: inset 0 3px 0 0 $color_silver;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    overflow-y: hidden;
+    margin: 0;
+    background: $color_butterfly_bush;
+    font-family: $font_main, $font_secondary;
+}
+
+.field {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.cell {
+    @extend %cells-style;
+}
+
+.snake-cell {
+    @extend %cells-style;
+    background: $color_log_cabin;
+}
+
+.food {
+    @extend %cells-style;
+    background: $color_waterloo;
+    animation: mymove 2s infinite;
+}
+
+.case {
+    width: 310px;
+    height: 550px;
+    background: $color_gigas;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 4px solid $color_meteorite;
+    border-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative;
+    box-shadow: inset 0 3px 0 0 $color_silver, 10px 10px $color_black_10;
+}
+
+.top {
+    width: 300px;
+    height: 20px;
+    border-bottom: 4px solid $color_meteorite;
+}
+
+.top-bar {
+    width: 250px;
+    height: 20px;
+    border-left: 4px solid $color_meteorite;
+    border-right: 4px solid $color_meteorite;
+    margin: 0 auto;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: $color_mine_shaft;
+}
+
+.menu__button {
+    width: 100px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    height: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color_white;
+    background: $color_scampi;
+    border-radius: 4px;
+    transition: .2s;
+    box-shadow: inset 0 3px 0 0 $color_silver;
+    &:hover {
+        background: $color_butterfly_bush;
+    }
+}
+
+.screen {
+    width: 260px;
+    box-shadow: inset 0 3px 0 0 $color_silver;
+    height: 235px;
+    background: $color_shark;
+    margin: 0 auto;
+    margin-top: 15px;
+    border: 4px solid $color_log_cabin;
+    border-radius: 20px;
+    z-index: 999;
+}
+
+.inner-screen {
+    width: 180px;
+    height: 180px;
+    background: $color-white;
+    margin: -60px auto;
+    border: 6px solid $color_log_cabin;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: $color_red;
+    border-radius: 50%;
+    margin-top: 70px;
+    margin-left: 10px;
+}
+
+.control {
+    width: 260px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 60px;
+    overflow: shown;
+    z-index: 999;
+}
+
+.shine {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    z-index: 1;
+    top: 286px;
+    left: 50%;
+    margin-left: -107px;
+    background: $color_scampi;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-left: 3px solid $color_scampi;
+    border-bottom: 3px solid $color_scampi;
+    border-right: 3px solid $color_scampi;
+}
+
+.pad {
+    width: 90px;
+    position: relative;
+    height: 90px;
+    background: $color_jacarta;
+    z-index: 999;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: inset 0 3px 0 0 $color_violent_violet;
+}
+
+.pad__item {
+    width: 80px;
+    position: absolute;
+    height: 26px;
+    left: 50%;
+    margin-left: -43px;
+    top: 50%;
+    margin-top: -15px;
+    z-index: 999;
+    background: $color_tuatara;
+    border-radius: 6px;
+    border: 3px solid $color_bunker;
+    box-shadow: inset 0 3px 0 0 $color_silver;
+}
+
+.pad__item-1 {
+    width: 26px;
+    position: absolute;
+    top: 50%;
+    margin-top: -42px;
+    left: 50%;
+    margin-left: -16px;
+    height: 76px;
+    background: $color_tuatara;
+    border-radius: 6px;
+    border: 3px solid $color_bunker;
+    box-shadow: inset 0 3px 0 0 $color_silver;
+}
+
+.button__one {
+    @extend %buttons-style;
+}
+
+.button__two {
+    @extend %buttons-style;
+    margin-right: 45px;
+    margin-top: -30px;
+}
+
+.starts {
+    width: 30px;
+    z-index: 999;
+    position: relative;
+    height: 5px;
+    border-radius: 200px;
+    background: $color_tuatara;
+    margin: 0 auto;
+    transform: rotate(-30deg) translateX(-30px);
+    box-shadow: 30px 20px 0 $color_tuatara;
+}
+
+#app {
+    position: relative;
+}
+
+.bars {
+    z-index: 999;
+    position: relative;
+    width: 5px;
+    height: 40px;
+    background: $color_tuatara;
+    border-radius: 200px;
+    margin: 90px auto;
+    transform: rotate(-35deg) translateX(70px);
+    box-shadow: 15px 0 0 $color_tuatara, 30px 0 0 $color_tuatara, 45px 0 0 $color_tuatara, 60px 0 0 $color_tuatara, 75px 0 0 $color_tuatara;
+}
+
+@keyframes mymove {
+    0% {
+        background: $color_puerto_rico;
+    }
+    50% {
+        background: $color_ocean_green;
+    }
+    100% {
+        background: $color_puerto_rico;
+    }
+}
